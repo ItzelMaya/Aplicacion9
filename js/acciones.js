@@ -2,12 +2,12 @@
  $(document).ready(function(e) {
     //WatchID se refier a actual
 	
- var WatchID=null;
- document.addEventListener("deviceready",Dispositivo_Listo.false);
+ var watchID=null;
+ document.addEventListener("deviceready",Dispositivo_Listo,false);
  
  //Cuando esta listo el dispositivo
  function Dispositivo_Listo(){
-	 comienza();
+	 Comienza();
  }
  
  //Empieza la observacion de la aceleracion
@@ -15,16 +15,16 @@
 	 
  //Actualizar la aceleracion cada 2segundos
  //
- var opciones={frecuency:2000};
+ var opciones={frequency:2000};
  
- WatchID=navigator.accelerometer.watchAcceleration(Correcto, Error, Opciones);
+ WatchID=navigator.accelerometer.watchAcceleration(Correcto, Error, opciones);
  navigator.geolocation.getCurrentPosition(Localiza, ErrorLocalizacion);
  }
  //Detiene la aceleracion 
  
  function Detente(){
 	 if(watchID){
-		 navigator.accelerometer.clearWatch (watchID);
+		 navigator .accelerometer.clearWatch (watchID);
 		 watchID=null;
 	 }
  }
@@ -52,6 +52,6 @@
  //Error en la geolocalizacion 
  function ErrorLocalizacion(error){
 	 alert('codigo: ' +error.code +'\n'+
-	 'mensaje ' +error.message+'\n');
+	 'mensaje: ' +error.message+'\n');
  }
-});
+}); //document ready
